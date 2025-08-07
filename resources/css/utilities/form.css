@@ -1,0 +1,11 @@
+@utility field {
+    @apply flex flex-col gap-2;
+}
+
+@utility input {
+    @apply border border-gray-300 p-2;
+}
+
+@utility submit {
+    @apply cursor-pointer bg-blue-300 p-2 hover:bg-blue-400;
+}
