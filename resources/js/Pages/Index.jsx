@@ -1,4 +1,4 @@
-import UserLayout from "../../Layout/UserLayout";
+import UserLayout from "../Layout/UserLayout";
 import { useState, useEffect } from "react";
 import { useEchoPublic } from "@laravel/echo-react";
 import { Trash2, Pencil } from "lucide-react";
