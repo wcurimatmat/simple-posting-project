@@ -1,13 +1,15 @@
-import UserLayout from "../Layout/UserLayout";
+import UserLayout from "../../Layout/UserLayout";
 import { useState, useEffect } from "react";
-import usePostEvents from "../Hooks/usePostEvent";
+import usePostEvents from "../../Hooks/usePostEvent";
 import { Trash2, Pencil } from "lucide-react";
 import { Link, router, usePage } from "@inertiajs/react";
-import FlashMessage from "../Components/FlashMessage";
+import FlashMessage from "../../Components/FlashMessage";
 
 function Index({ posts }) {
     const [postListing, setPostListing] = useState([]);
-    const { flash, error } = usePage().props;
+    const { flash, error, auth } = usePage().props;
+
+    console.log(usePage());
 
     useEffect(() => {
         setPostListing(posts);
