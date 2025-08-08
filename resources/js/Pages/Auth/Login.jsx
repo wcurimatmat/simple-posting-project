@@ -18,7 +18,7 @@ function Login() {
                 <p className="font-bold">LaReact Postings</p>
 
                 <nav>
-                    <Link href={route("register.index")}>Register</Link>
+                    <Link href={route("register.create")}>Register</Link>
                 </nav>
             </header>
 
