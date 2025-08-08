@@ -1,24 +1,7 @@
-import UserLayout from "../../Layout/UserLayout";
+import UserLayout from "../Layout/UserLayout";
 import { useState, useEffect } from "react";
 import { router, usePage } from "@inertiajs/react";
-
-function FlashMessage({ message }) {
-    const [fadingOut, setFadingOut] = useState(false);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setFadingOut(true);
-        }, 3000);
-    }, []);
-
-    return (
-        <article
-            className={`fixed top-48 right-12 border-2 border-green-400 bg-green-200 px-7 py-4 transition duration-200 ease-in-out ${fadingOut ? "opacity-0" : "opacity-100"}`}
-        >
-            <p>{message}</p>
-        </article>
-    );
-}
+import FlashMessage from "../Components/FlashMessage";
 
 function Edit({ post }) {
     const { flash, error } = usePage().props;
