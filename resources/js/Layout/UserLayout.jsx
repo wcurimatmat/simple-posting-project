@@ -27,7 +27,7 @@ function Nav() {
                             href={navItem.url}
                             className={
                                 component.startsWith(navItem.component)
-                                    ? "text-purple-400 font-bold"
+                                    ? "font-bold text-purple-400"
                                     : ""
                             }
                         >
@@ -41,12 +41,18 @@ function Nav() {
 }
 
 function UserLayout({ children }) {
+    const { auth } = usePage().props;
+
     return (
         <div className="font-display">
             <header className="flex justify-between p-14">
                 <p className="font-bold">LaReact Postings</p>
 
-                <Nav />
+                {auth.user ? (
+                    <Nav />
+                ) : (
+                    <Link href={route("login.index")}>Login</Link>
+                )}
             </header>
 
             <main>
