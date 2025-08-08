@@ -59,6 +59,8 @@ function UserLayout({ children }) {
             <header className="flex justify-between p-14">
                 <p className="font-bold">LaReact Postings</p>
 
+                <p>{auth.user && auth.user.data.name}</p>
+
                 {auth.user ? (
                     <Nav />
                 ) : (
