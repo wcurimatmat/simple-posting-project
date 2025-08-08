@@ -1,6 +1,6 @@
 import UserLayout from "../Layout/UserLayout";
 import { useState, useEffect } from "react";
-import { useEchoPublic } from "@laravel/echo-react";
+import usePostEvents from "../Hooks/usePostEvent";
 import { Trash2, Pencil } from "lucide-react";
 import { Link, router, usePage } from "@inertiajs/react";
 import FlashMessage from "../Components/FlashMessage";
@@ -13,31 +13,7 @@ function Index({ posts }) {
         setPostListing(posts);
     }, []);
 
-    useEchoPublic("posts", "PostCreated", function (e) {
-        setPostListing(function (previousPostListings) {
-            return [e.post, ...previousPostListings];
-        });
-    });
-
-    useEchoPublic("posts", "PostUpdated", function (e) {
-        setPostListing(function (previousPostListings) {
-            return previousPostListings.map(function (post) {
-                if (post.id === e.post.id) {
-                    return e.post;
-                }
-
-                return post;
-            });
-        });
-    });
-
-    useEchoPublic("posts", "PostDeleted", function (e) {
-        setPostListing(function (previousPostListings) {
-            return previousPostListings.filter(function (post) {
-                return post.id !== e.post_id;
-            });
-        });
-    });
+    usePostEvents(setPostListing);
 
     function handleDelete(id) {
         if (confirm("Are you sure you want to delete this post?")) {
