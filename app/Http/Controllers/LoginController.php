@@ -32,4 +32,15 @@ class LoginController extends Controller
 
         return Redirect::back()->with('error', 'Error given credentials');
     }
+
+    public function destroy(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return Redirect::to(AppServiceProvider::HOME);
+    }
 }
