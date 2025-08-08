@@ -32,24 +32,24 @@ function Login() {
                     className="m-auto grid w-lg gap-6"
                 >
                     <div className="field">
-                        <label htmlFor="" className="font-bold text-gray-600">
+                        <label htmlFor="email" className="font-bold text-gray-600">
                             Email
                         </label>
                         <input
                             type="text"
-                            id="title"
+                            id="email"
                             value={data.email}
                             className="input"
                             onChange={(e) => setData("email", e.target.value)}
                         />
                     </div>
                     <div className="field">
-                        <label htmlFor="" className="font-bold text-gray-600">
+                        <label htmlFor="password" className="font-bold text-gray-600">
                             Password
                         </label>
                         <input
                             type="password"
-                            id="title"
+                            id="password"
                             value={data.password}
                             className="input"
                             onChange={(e) =>
