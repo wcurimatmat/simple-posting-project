@@ -64,14 +64,14 @@ function Register() {
                     </div>
                     <div className="field">
                         <label
-                            htmlFor="email"
+                            htmlFor="password"
                             className="font-bold text-gray-600"
                         >
                             Password
                         </label>
                         <input
                             type="password"
-                            id="email"
+                            id="password"
                             value={data.password}
                             className="input"
                             onChange={(e) =>
