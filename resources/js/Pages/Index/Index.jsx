@@ -7,9 +7,7 @@ import FlashMessage from "../../Components/FlashMessage";
 
 function Index({ posts }) {
     const [postListing, setPostListing] = useState([]);
-    const { flash, error, auth } = usePage().props;
-
-    console.log(usePage());
+    const { flash, error } = usePage().props;
 
     useEffect(() => {
         setPostListing(posts);
