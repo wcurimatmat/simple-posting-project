@@ -1,4 +1,4 @@
-import { useForm } from "@inertiajs/react";
+import { useForm, Link } from "@inertiajs/react";
 
 function Login() {
     const { data, setData, post, processing } = useForm({
@@ -14,8 +14,12 @@ function Login() {
 
     return (
         <>
-            <header className="p-14">
+            <header className="flex justify-between p-14">
                 <p className="font-bold">LaReact Postings</p>
+
+                <nav>
+                    <Link href={route("register.index")}>Register</Link>
+                </nav>
             </header>
 
             <section className="px-14">
