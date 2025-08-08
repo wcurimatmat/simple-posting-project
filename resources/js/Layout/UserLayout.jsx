@@ -1,4 +1,4 @@
-import { Link, usePage } from "@inertiajs/react";
+import { Link, usePage, router } from "@inertiajs/react";
 
 function Nav() {
     const { component } = usePage();
@@ -18,6 +18,12 @@ function Nav() {
         },
     ];
 
+    function handleLogout(e) {
+        e.preventDefault();
+
+        router.post(route("logout"));
+    }
+
     return (
         <nav>
             <ul className="flex gap-5">
@@ -35,6 +41,11 @@ function Nav() {
                         </Link>
                     </li>
                 ))}
+                <li>
+                    <form onSubmit={handleLogout}>
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
             </ul>
         </nav>
     );
@@ -51,7 +62,12 @@ function UserLayout({ children }) {
                 {auth.user ? (
                     <Nav />
                 ) : (
-                    <Link href={route("login.index")}>Login</Link>
+                    <Link
+                        href={route("login.create")}
+                        className="bg-blue-400 p-2 px-4 text-white"
+                    >
+                        Login
+                    </Link>
                 )}
             </header>
 
