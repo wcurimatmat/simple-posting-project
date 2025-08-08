@@ -42,7 +42,7 @@ function Nav() {
 
 function UserLayout({ children }) {
     return (
-        <>
+        <div className="font-display">
             <header className="flex justify-between p-14">
                 <p className="font-bold">LaReact Postings</p>
 
@@ -52,7 +52,7 @@ function UserLayout({ children }) {
             <main>
                 <div className="px-14">{children}</div>
             </main>
-        </>
+        </div>
     );
 }
 
