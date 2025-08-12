@@ -1,4 +1,5 @@
 import { Link, usePage, router } from "@inertiajs/react";
+import Avatar from "../Components/Avatar";
 
 function Nav() {
     const { component } = usePage();
@@ -59,7 +60,7 @@ function UserLayout({ children }) {
             <header className="flex justify-between p-14">
                 <p className="font-bold">LaReact Postings</p>
 
-                <p>{auth.user && auth.user.data.name}</p>
+                <Avatar />
 
                 {auth.user ? (
                     <Nav />
