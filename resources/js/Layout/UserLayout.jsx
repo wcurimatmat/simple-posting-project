@@ -56,8 +56,8 @@ function UserLayout({ children }) {
     const { auth } = usePage().props;
 
     return (
-        <div className="font-display">
-            <header className="flex justify-between p-14">
+        <div className="p-14 font-display">
+            <header className="flex justify-between">
                 <p className="font-bold">LaReact Postings</p>
 
                 <Avatar />
@@ -74,7 +74,7 @@ function UserLayout({ children }) {
                 )}
             </header>
 
-            <main>
+            <main className="mt-8">
                 <div className="px-14">{children}</div>
             </main>
         </div>
