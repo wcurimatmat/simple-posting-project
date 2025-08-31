@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 Route::controller(PostController::class)->group(function () {
     Route::get('/posts', 'Index')->name('posts.index');
     Route::get('/posts/{post}', 'show')->name('posts.show');
-    Route::get('/posts/create', 'Create')->name('posts.create');
+    Route::get('/posts/create', 'create')->name('posts.create');
     Route::post('/posts', 'store')->name('posts.store');
     Route::get('/posts/{post}/edit', 'edit')->name('posts.edit');
     Route::put('/posts/{post}', 'update')->name('posts.update');
