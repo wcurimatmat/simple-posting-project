@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Inertia\Inertia;
 use App\Events\PostCreated;
@@ -17,7 +18,7 @@ class PostController extends Controller
     public function index()
     {
         return Inertia::render('Index/Index', [
-            'posts' => Post::latest()->get(),
+            'posts' => PostResource::collection(Post::paginate(4))
         ]);
     }
 
