@@ -48,9 +48,11 @@ function Index({ posts }) {
                             className="flex w-lg shrink grow basis-4 justify-between border border-gray-400 p-8"
                         >
                             <div className="grid gap-3">
-                                <h2 className="text-2xl font-bold">
-                                    {post.title}
-                                </h2>
+                                <Link href={route("posts.show", post.id)}>
+                                    <h2 className="text-2xl font-bold">
+                                        {post.title}
+                                    </h2>
+                                </Link>
                                 <p>{post.content}</p>
                                 <p className="text-sm text-gray-400">
                                     {new Date(post.updated_at).toLocaleString()}
