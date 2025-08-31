@@ -9,7 +9,9 @@ function Show({ post, related }) {
                     <header>
                         <h1 className="text-2xl font-bold">{post.title}</h1>
                     </header>
-                    <div className="">{post.content}</div>
+                    <div className="max-w-xl">
+                        <p className="leading-7">{post.content}</p>
+                    </div>
                 </div>
                 <div className="space-y-6">
                     <div className="">
