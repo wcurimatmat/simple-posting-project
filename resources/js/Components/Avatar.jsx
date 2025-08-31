@@ -1,5 +1,5 @@
 import { createAvatar } from "@dicebear/core";
-import { adventurerNeutral } from "@dicebear/collection";
+import { bigEarsNeutral } from "@dicebear/collection";
 import { useMemo } from "react";
 import { usePage } from "@inertiajs/react";
 
@@ -7,7 +7,7 @@ function Avatar() {
     const { auth } = usePage().props;
 
     const avatar = useMemo(() => {
-        return createAvatar(adventurerNeutral, {
+        return createAvatar(bigEarsNeutral, {
             seed: auth.user.data.name,
             textColor: ["FFFFFF"],
             size: 40,
