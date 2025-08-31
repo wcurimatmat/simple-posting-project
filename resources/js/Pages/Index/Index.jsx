@@ -4,6 +4,7 @@ import usePostEvents from "../../Hooks/usePostEvent";
 import { Trash2, Pencil } from "lucide-react";
 import { Link, router, usePage } from "@inertiajs/react";
 import FlashMessage from "../../Components/FlashMessage";
+import Paginate from "../../Components/Paginate";
 
 function Index({ posts }) {
     const { flash, error } = usePage().props;
@@ -42,8 +43,8 @@ function PostListings({ posts }) {
     const [listOfPosts, setListOfPosts] = useState([]);
 
     useEffect(() => {
-        setListOfPosts(posts);
-    }, [posts]);
+        setListOfPosts(posts.data);
+    }, [posts.data]);
 
     usePostEvents(setListOfPosts);
 
@@ -71,48 +72,54 @@ function PostListings({ posts }) {
     }
 
     return (
-        <ul className="grid grid-cols-2 gap-6">
-            {listOfPosts.map((post) => (
-                <li
-                    key={post.id}
-                    className="flex w-full justify-between border border-gray-400 p-8"
-                >
-                    <div className="grid gap-3">
-                        <Link href={route("posts.show", post.id)}>
-                            <h2 className="text-2xl font-bold">{post.title}</h2>
-                        </Link>
-                        <p>{post.content}</p>
-                        <p className="text-sm text-gray-400">
-                            {new Date(post.updated_at).toLocaleString()}
-                        </p>
-                    </div>
+        <>
+            <ul className="grid grid-cols-2 gap-6">
+                {listOfPosts.map((post) => (
+                    <li
+                        key={post.id}
+                        className="flex w-full justify-between border border-gray-400 p-8"
+                    >
+                        <div className="grid gap-3">
+                            <Link href={route("posts.show", post.id)}>
+                                <h2 className="text-2xl font-bold">
+                                    {post.title}
+                                </h2>
+                            </Link>
+                            <p>{post.content}</p>
+                            <p className="text-sm text-gray-400">
+                                {new Date(post.updated_at).toLocaleString()}
+                            </p>
+                        </div>
 
-                    <div className="">
-                        <ul className="align-center flex gap-4">
-                            <li>
-                                <button
-                                    className="cursor-pointer"
-                                    onClick={() => {
-                                        handleDelete(post.id);
-                                    }}
-                                >
-                                    <Trash2 size={20} />
-                                </button>
-                            </li>
-                            <li>
-                                <Link
-                                    href={route("posts.edit", {
-                                        post: post.id,
-                                    })}
-                                >
-                                    <Pencil size={20} />
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            ))}
-        </ul>
+                        <div className="">
+                            <ul className="align-center flex gap-4">
+                                <li>
+                                    <button
+                                        className="cursor-pointer"
+                                        onClick={() => {
+                                            handleDelete(post.id);
+                                        }}
+                                    >
+                                        <Trash2 size={20} />
+                                    </button>
+                                </li>
+                                <li>
+                                    <Link
+                                        href={route("posts.edit", {
+                                            post: post.id,
+                                        })}
+                                    >
+                                        <Pencil size={20} />
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                ))}
+            </ul>
+
+            <Paginate meta={posts.meta} />
+        </>
     );
 }
 
