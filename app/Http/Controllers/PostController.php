@@ -58,6 +58,14 @@ class PostController extends Controller
         return Redirect::back()->with('success', 'Post updated.');
     }
 
+    public function show(Post $post)
+    {
+        return Inertia::render('Show', [
+            "post" => $post,
+            'related' => $post->related()
+        ]);
+    }
+
     public function destroy(Post $post)
     {
         $post->delete();
