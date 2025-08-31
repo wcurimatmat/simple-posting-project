@@ -7,6 +7,8 @@ function Avatar() {
     const { auth } = usePage().props;
 
     const avatar = useMemo(() => {
+        if (!auth?.user) return null;
+
         return createAvatar(bigEarsNeutral, {
             seed: auth.user.data.name,
             textColor: ["FFFFFF"],
