@@ -6,7 +6,7 @@ function UserLayout({ children }) {
 
     return (
         <div className="p-14 font-display">
-            <header className="flex justify-between">
+            <header className="flex justify-between items-center">
                 <p className="font-bold">LaReact Postings</p>
 
                 <Avatar />
