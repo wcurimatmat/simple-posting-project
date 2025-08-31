@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\PostCreated;
-use App\Events\PostUpdated;
 use App\Models\Post;
 use Inertia\Inertia;
+use App\Events\PostCreated;
+use App\Events\PostUpdated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class PostController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         return Inertia::render('Index/Index', [
@@ -18,11 +21,17 @@ class PostController extends Controller
         ]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         return Inertia::render('Create');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -37,6 +46,20 @@ class PostController extends Controller
         return Redirect::back()->with('success', 'Post added.');
     }
 
+    /**
+     * Display the specified resource.
+     */
+    public function show(Post $post)
+    {
+        return Inertia::render('Show', [
+            "post" => $post,
+            'related' => $post->related()
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit(Post $post)
     {
         return Inertia::render('Edit', [
@@ -44,6 +67,9 @@ class PostController extends Controller
         ]);
     }
 
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, Post $post)
     {
         $validated = $request->validate([
@@ -58,14 +84,9 @@ class PostController extends Controller
         return Redirect::back()->with('success', 'Post updated.');
     }
 
-    public function show(Post $post)
-    {
-        return Inertia::render('Show', [
-            "post" => $post,
-            'related' => $post->related()
-        ]);
-    }
-
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy(Post $post)
     {
         $post->delete();
