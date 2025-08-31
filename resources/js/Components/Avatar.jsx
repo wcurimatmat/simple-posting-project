@@ -16,8 +16,6 @@ function Avatar() {
         }).toDataUri();
     });
 
-    console.log(avatar);
-
     return <>{auth.user && <img src={avatar} alt={auth.user.data.name} />}</>;
 }
 
