@@ -85,7 +85,6 @@ function PostListings({ posts }) {
                                     {post.title}
                                 </h2>
                             </Link>
-                            <p>{post.content}</p>
                             <p className="text-sm text-gray-400">
                                 {new Date(post.updated_at).toLocaleString()}
                             </p>
