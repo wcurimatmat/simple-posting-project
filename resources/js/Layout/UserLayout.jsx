@@ -1,6 +1,35 @@
 import { Link, usePage, router } from "@inertiajs/react";
 import Avatar from "../Components/Avatar";
 
+function UserLayout({ children }) {
+    const { auth } = usePage().props;
+
+    return (
+        <div className="p-14 font-display">
+            <header className="flex justify-between">
+                <p className="font-bold">LaReact Postings</p>
+
+                <Avatar />
+
+                {auth.user ? (
+                    <Nav />
+                ) : (
+                    <Link
+                        href={route("login.create")}
+                        className="bg-blue-400 p-2 px-4 text-white"
+                    >
+                        Login
+                    </Link>
+                )}
+            </header>
+
+            <main className="mt-8">
+                <div className="px-14">{children}</div>
+            </main>
+        </div>
+    );
+}
+
 function Nav() {
     const { component } = usePage();
 
@@ -49,35 +78,6 @@ function Nav() {
                 </li>
             </ul>
         </nav>
-    );
-}
-
-function UserLayout({ children }) {
-    const { auth } = usePage().props;
-
-    return (
-        <div className="p-14 font-display">
-            <header className="flex justify-between">
-                <p className="font-bold">LaReact Postings</p>
-
-                <Avatar />
-
-                {auth.user ? (
-                    <Nav />
-                ) : (
-                    <Link
-                        href={route("login.create")}
-                        className="bg-blue-400 p-2 px-4 text-white"
-                    >
-                        Login
-                    </Link>
-                )}
-            </header>
-
-            <main className="mt-8">
-                <div className="px-14">{children}</div>
-            </main>
-        </div>
     );
 }
 
