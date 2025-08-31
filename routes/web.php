@@ -5,9 +5,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return redirect('/posts');
+});
 
 Route::resource("posts", PostController::class);
 
